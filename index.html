@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSync | Property Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-screen" id="loginScreen" hidden>
+        <form class="login-card" id="loginForm" autocomplete="on">
+            <div class="brand login-brand"><span class="brand-icon">H</span> HomeSync</div>
+            <h2>Sign in</h2>
+            <p class="muted">Tenants, landlords and maintenance staff all sign in here.</p>
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="username" required>
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" required>
+            <div class="form-error" id="loginError" role="alert"></div>
+            <button class="btn primary block" type="submit" id="loginSubmit">Sign in</button>
+        </form>
+    </div>
+
+    <div class="app" id="app" hidden>
+        <aside class="sidebar" id="sidebar">
+            <a href="#" class="brand" onclick="A.go('dashboard');return false;"><span class="brand-icon">H</span> HomeSync</a>
+
+            <div class="portal-label">WORKSPACE</div>
+            <div class="portal active" id="roleChip">⌂ <span id="roleChipText">Tenant App</span></div>
+
+            <div class="side-divider"></div>
+
+            <div class="portal-label">MENU</div>
+            <nav id="navigation"></nav>
+
+            <div class="sidebar-bottom">
+                <div class="avatar" id="sideAvatar">–</div>
+                <div>
+                    <strong id="userName">–</strong>
+                    <small id="userRole">–</small>
+                </div>
+                <button class="icon-btn" title="Sign out" onclick="A.logout()">⎋</button>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn menu-toggle" onclick="A.toggleMenu()" aria-label="Menu">☰</button>
+                    <div>
+                        <div class="eyebrow">PROPERTY MANAGEMENT</div>
+                        <h2 id="pageHeading">Welcome</h2>
+                    </div>
+                </div>
+                <div class="top-actions">
+                    <div class="notif-wrap">
+                        <button class="icon-btn notification" id="notifBtn" onclick="A.toggleNotifs()" title="Notifications">♧<span id="notifDot" hidden></span></button>
+                        <div class="notif-panel" id="notifPanel" hidden></div>
+                    </div>
+                    <div class="top-avatar" id="topAvatar">–</div>
+                </div>
+            </header>
+
+            <div class="content" id="content"></div>
+
+            <footer>
+                © 2026 HomeSync <span>Better living, connected.</span>
+            </footer>
+        </main>
+    </div>
+
+    <div class="modal-backdrop" id="modal"><div class="modal" id="modalBox"></div></div>
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

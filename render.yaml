@@ -1,0 +1,23 @@
+databases:
+  - name: homesync-db
+    plan: free
+    databaseName: homesync
+    user: homesync
+
+services:
+  - type: web
+    name: homesync
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    # creates/updates tables and adds the demo accounts (safe to run on every start)
+    startCommand: node setup.js --demo && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: homesync-db
+          property: connectionString
